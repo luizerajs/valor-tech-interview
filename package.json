@@ -10,7 +10,7 @@
     "start:remote": "yarn workspace remote start",
     "start:shell": "yarn workspace shell start",
     "start": "concurrently \"yarn start:shell\" \"yarn start:remote\"",
-    "build": "yarn --filter=./remote build && yarn --filter=./shell build"
+    "build": "yarn workspace remote build && yarn workspace shell build"
   },
   "devDependencies": {
     "concurrently": "^9.1.2"
