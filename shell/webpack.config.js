@@ -1,12 +1,14 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { withZephyr } = require("zephyr-webpack-plugin");
 const {ModuleFederationPlugin} = require("webpack").container;
-const ExternalTemplateRemotesPlugin = require("external-remotes-plugin");
 const path = require("path");
+
+const LATEST_REMOTE_APP_URL = "https://t-web-latest-luiz-chaves-remote-valor-tech-interview--13210c-ze.zephyrcloud.app";
 
 module.exports = (_, argv) => {
   const MODE = argv.mode || "development";
   const IS_PRODUCTION = MODE === "production";
+  const REMOTE_APP_URL = IS_PRODUCTION ? LATEST_REMOTE_APP_URL : "http://localhost:3002";
 
   const config = {
     entry: "./src/index",
@@ -36,11 +38,10 @@ module.exports = (_, argv) => {
       new ModuleFederationPlugin({
         name: "shellApp",
         remotes: {
-          remoteApp: "remoteApp@[remoteAppUrl]/remoteEntry.js",
+          remote: `remoteApp@${REMOTE_APP_URL}/remoteEntry.js`,
         },
         shared: {react: {singleton: true}, "react-dom": {singleton: true}},
       }),
-      new ExternalTemplateRemotesPlugin(),
       new HtmlWebpackPlugin({
         template: "./public/index.html",
       }),

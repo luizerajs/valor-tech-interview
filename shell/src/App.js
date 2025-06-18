@@ -1,5 +1,5 @@
 import { Suspense, lazy } from "react";
-const RemoteApp = lazy(() => import("remoteApp/App"));
+const RemoteApp = lazy(() => import("remote/App"));
 
 const App = () => {
   return (
