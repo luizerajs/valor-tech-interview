@@ -47,7 +47,7 @@ yarn start:shell
 yarn build
 ```
 
-## ✏️ Feedback on the challenge
+## ✏Feedback on the challenge
 
 I found Zephyr Cloud very interesting to work with. Having such an easy and practical deployment process was really enjoyable and valuable in the development of the challenge, and I can imagine the confidence and agility it brings in day-to-day work. Zephyr's documentation is clear and easy to use. The challenge was practical and aligned with real-world scenarios, I didn't focus on premature bundle improvements, but there are several interesting webpack configurations to optimize in production environments.
 
