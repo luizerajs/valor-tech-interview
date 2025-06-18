@@ -3,12 +3,18 @@ const { withZephyr } = require("zephyr-webpack-plugin");
 const { ModuleFederationPlugin } = require('webpack').container;
 const path = require('path');
 
-module.exports = withZephyr()({
+const MODE = process.env.NODE_ENV || "development";
+const IS_PRODUCTION = MODE === "production";
+
+const config = {
   entry: './src/index',
-  mode: 'development',
+  mode: MODE,
   devServer: {
     static: path.join(__dirname, 'dist'),
     port: 3002,
+    hot: false,
+    liveReload: true,
+    watchFiles: ['src/**/*', 'public/**/*'],
   },
   output: {
     publicPath: 'auto',
@@ -20,7 +26,9 @@ module.exports = withZephyr()({
         loader: 'babel-loader',
         exclude: /node_modules/,
         options: {
-          presets: ['@babel/preset-react'],
+          presets: [
+            ["@babel/preset-react", { runtime: "automatic", development: !IS_PRODUCTION }]
+          ],
         },
       },
     ],
@@ -39,4 +47,6 @@ module.exports = withZephyr()({
       template: './public/index.html',
     }),
   ],
-});
+};
+
+module.exports = IS_PRODUCTION ? withZephyr()(config) : config;

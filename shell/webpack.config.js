@@ -4,9 +4,12 @@ const {ModuleFederationPlugin} = require("webpack").container;
 const ExternalTemplateRemotesPlugin = require("external-remotes-plugin");
 const path = require("path");
 
-module.exports = withZephyr()({
+const MODE = process.env.NODE_ENV || "development";
+const IS_PRODUCTION = MODE === "production";
+
+const config = {
   entry: "./src/index",
-  mode: "development",
+  mode: MODE,
   devServer: {
     static: path.join(__dirname, "dist"),
     port: 3001,
@@ -21,7 +24,9 @@ module.exports = withZephyr()({
         loader: "babel-loader",
         exclude: /node_modules/,
         options: {
-          presets: ["@babel/preset-react"],
+          presets: [
+            ["@babel/preset-react", { runtime: "automatic", development: !IS_PRODUCTION }]
+          ],
         },
       },
     ],
@@ -30,7 +35,7 @@ module.exports = withZephyr()({
     new ModuleFederationPlugin({
       name: "shellApp",
       remotes: {
-        "remoteApp": "remoteApp@http://localhost:3002/remoteEntry.js",
+        remoteApp: "remoteApp@[remoteAppUrl]/remoteEntry.js",
       },
       shared: {react: {singleton: true}, "react-dom": {singleton: true}},
     }),
@@ -39,5 +44,6 @@ module.exports = withZephyr()({
       template: "./public/index.html",
     }),
   ],
-});
+};
 
+module.exports = IS_PRODUCTION ? withZephyr()(config) : config;
