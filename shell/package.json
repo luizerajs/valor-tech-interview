@@ -23,6 +23,6 @@
     "webpack-dev-server": "catalog:webpack5"
   },
   "zephyr:dependencies": {
-    "default_webpack_mf_second": "zephyr:default_webpack_mf_second@*"
+    "remote": "zephyr:remote@*"
   }
 }
