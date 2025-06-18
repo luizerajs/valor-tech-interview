@@ -1,5 +1,5 @@
 {
-  "name": "default_webpack_mf_first",
+  "name": "shell",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
@@ -8,10 +8,10 @@
     "build": "webpack --mode production"
   },
   "dependencies": {
+    "external-remotes-plugin": "^1.0.0",
     "react": "catalog:react18",
     "react-dom": "catalog:react18",
-    "zephyr-webpack-plugin": "catalog:zephyr",
-    "external-remotes-plugin": "^1.0.0"
+    "zephyr-webpack-plugin": "catalog:zephyr"
   },
   "devDependencies": {
     "@babel/core": "catalog:babel",

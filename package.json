@@ -1,7 +1,18 @@
 {
   "name": "create-default-webpack-mf",
   "version": "0.0.1",
+  "private": true,
+  "workspaces": [
+    "shell",
+    "remote"
+  ],
   "scripts": {
-    "build": "pnpm --filter=./app2 build && pnpm --filter=./app1 build"
+    "start:remote": "yarn workspace remote start",
+    "start:shell": "yarn workspace shell start",
+    "start": "concurrently \"yarn start:shell\" \"yarn start:remote\"",
+    "build": "yarn --filter=./remote build && yarn --filter=./shell build"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
   }
 }

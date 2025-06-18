@@ -28,7 +28,7 @@ module.exports = withZephyr()({
   plugins: [
     // To learn more about the usage of this plugin, please visit https://webpack.js.org/plugins/module-federation-plugin/
     new ModuleFederationPlugin({
-      name: 'default_webpack_mf_second',
+      name: 'remoteApp',
       filename: 'remoteEntry.js',
       exposes: {
         './App': './src/App',
