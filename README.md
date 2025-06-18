@@ -1,20 +1,80 @@
-# Module Federation
+# Valor Tech Interview — Module Federation + Zephyr Cloud
 
-## How to use
+This repository was created as part of the technical process for Valor Software.
+---
 
-Run the following commands in the root directory.
+## Stack
+
+* React 18
+* Webpack 5
+* Module Federation
+* Zephyr Cloud (for remote deployments)
+* Monorepo with Yarn Workspaces
+
+---
+
+## Project Structure
+
+```text
+valor-tech-interview/
+├── shell/      → host application (shell)
+├── remote/     → remote application exposed via MF
+├── package.json
+└── README.md
+```
+
+---
+
+## How to run locally (development)
+
+1 - Install dependencies:
 
 ```bash
-yarn
+yarn install
+```
+
+2- Run both remote and shell applications:
+
+```bash
 yarn start
 ```
-Both `app1` and `app2` are independently deployed apps:
 
-- `app1`: http://localhost:3001
-- `app2`: http://localhost:3002
+* The shell will be available at: [http://localhost:3001](http://localhost:3001)
+* The remote will be available at: [http://localhost:3002](http://localhost:3002)
 
-To be able to use this example, build app2. Then find it in https://app.zephyr-cloud.io and set link to 'remoteEntry.js' file. Link should be set in variable app2Url (/app1/src/index.js).
+or each:
 
-Check out this link below for more examples:
+```bash
+yarn start:remote
+yarn start:shell
+```
 
-[https://github.com/module-federation/module-federation-examples](https://github.com/module-federation/module-federation-examples)
+---
+
+## How to build for production
+
+```bash
+yarn build
+```
+
+## ✏️ Feedback on the challenge
+
+I found it very interesting to work with Zephyr Cloud, having such an easy and practical deployment process is truly enjoyable and valuable in daily development. The challenge was practical and aligned with real-world scenarios, and the Zephyr documentation is clear. 
+
+If I had more time to improve the implementation, I would:
+
+* Further separate responsibilities across the codebase
+* Refine the remote URL flow for better maintainability
+* Apply additional refactoring to each Webpack configuration file
+
+---
+
+## 📄 Example URLs
+
+Deployed remote:
+[https://t-web-latest-luiz-chaves-remote-valor-tech-interview--13210c-ze.zephyrcloud.app/remoteEntry.js](https://t-web-latest-luiz-chaves-remote-valor-tech-interview--13210c-ze.zephyrcloud.app/remoteEntry.js)
+
+Built shell:
+[https://t-web-latest-luiz-chaves-shell-valor-tech-interview-l-3803c0-ze.zephyrcloud.app/](https://t-web-latest-luiz-chaves-shell-valor-tech-interview-l-3803c0-ze.zephyrcloud.app/)
+
+---
