@@ -1,24 +1,14 @@
-# Valor Tech Interview — Module Federation + Zephyr Cloud
-
-This repository was created as part of the technical process for Valor Software.
+# Valor Tech Task — Module Federation + Zephyr Cloud
 ---
-
-## Stack
-
-* React 18
-* Webpack 5
-* Module Federation
-* Zephyr Cloud (for remote deployments)
-* Monorepo with Yarn Workspaces
-
----
+This repository was created as part of the technical task for Valor Software. <br />
+Author: Luiz Chaves
 
 ## Project Structure
 
 ```text
 valor-tech-interview/
-├── shell/      → host application (shell)
 ├── remote/     → remote application exposed via MF
+├── shell/      → host application (shell)
 ├── package.json
 └── README.md
 ```
@@ -59,11 +49,10 @@ yarn build
 
 ## ✏️ Feedback on the challenge
 
-I found it very interesting to work with Zephyr Cloud, having such an easy and practical deployment process is truly enjoyable and valuable in daily development. The challenge was practical and aligned with real-world scenarios, and the Zephyr documentation is clear. 
+I found Zephyr Cloud very interesting to work with. Having such an easy and practical deployment process was really enjoyable and valuable in the development of the challenge, and I can imagine the confidence and agility it brings in day-to-day work. Zephyr's documentation is clear and easy to use. The challenge was practical and aligned with real-world scenarios, I didn't focus on premature bundle improvements, but there are several interesting webpack configurations to optimize in production environments.
 
-If I had more time to improve the implementation, I would:
+Improvements I would focus on in the proposed solution:
 
-* Further separate responsibilities across the codebase
 * Refine the remote URL flow for better maintainability
 * Apply additional refactoring to each Webpack configuration file
 
