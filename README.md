@@ -1,4 +1,4 @@
-# Valor Tech Task — Module Federation + Zephyr Cloud
+# Valor Software Task 
 ---
 This repository was created as part of the technical task for Valor Software. <br />
 Author: Luiz Chaves
